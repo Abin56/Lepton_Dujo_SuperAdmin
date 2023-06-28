@@ -35,13 +35,13 @@ class TempStudentController extends GetxController {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text('ok'),
+              child: const Text('Ok'),
               onPressed: () async {
                 await firebase
                     .doc(schoolID)
@@ -91,13 +91,13 @@ class TempStudentController extends GetxController {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text('ok'),
+              child: const Text('Ok'),
               onPressed: () async {
                 await firebase
                     .doc(schoolID)
@@ -146,13 +146,13 @@ class TempStudentController extends GetxController {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text('ok'),
+              child: const Text('Ok'),
               onPressed: () async {
                 await firebase
                     .doc(schoolID)
@@ -194,13 +194,13 @@ class TempStudentController extends GetxController {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text('ok'),
+              child: const Text('Ok'),
               onPressed: () async {
                 await firebase
                     .doc(schoolID)
