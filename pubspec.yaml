@@ -43,10 +43,14 @@ dependencies:
   cloud_firestore:
   fluttertoast: 
   flutter_staggered_animations: 
+  csv: 
   get: 
   uuid: 
   lottie: 
   google_fonts: 
+  pdf: 
+  path_provider: 
+  printing: 
 dev_dependencies:
   flutter_test:
     sdk: flutter

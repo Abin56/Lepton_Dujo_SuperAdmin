@@ -4,6 +4,7 @@ import 'package:dujo_super_admin/lepton_Admin/temp_collections/teachers/teacher_
 import 'package:dujo_super_admin/widgets/buttonContainer.dart';
 import 'package:flutter/material.dart';
 
+import '../Add_student/add_student.dart';
 import 'guardian/guardian_collection.dart';
 
 getTempDilogBox(BuildContext context, String schoolID) {
@@ -85,6 +86,23 @@ getTempDilogBox(BuildContext context, String schoolID) {
                         height: 100,
                         width: 200,
                         child: const Center(child: Text('Teachers')),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () async {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return AddStudentToFirebase(schoolID: schoolID);
+                          },
+                        ));
+                      },
+                      child: ButtonContainerWidget(
+                        curving: 20,
+                        colorindex: 0,
+                        height: 100,
+                        width: 200,
+                        child:
+                            const Center(child: Text('Add Students AutoMatic')),
                       ),
                     ),
                   ],
