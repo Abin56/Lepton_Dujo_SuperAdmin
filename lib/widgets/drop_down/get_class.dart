@@ -5,6 +5,7 @@ import 'package:dujo_super_admin/controllers/temp_Collection_controller/temp_stu
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/add_student_firebase/add_student_toFirebase_controller.dart';
 import '../../controllers/temp_Collection_controller/temp_gurdian_cotroller/temp_guardian_controller.dart';
 import '../../controllers/temp_Collection_controller/temp_parent_controller/temp_parent_controller.dart';
 
@@ -15,6 +16,8 @@ class GetClassesListDropDownButton extends StatefulWidget {
       Get.put(TempStudentController());
   TempGuardianController tempGuardianController =
       Get.put(TempGuardianController());
+  AddStudentToFirebaseController addStudentToFirebase =
+      Get.put(AddStudentToFirebaseController());
   TempParentController tempParentController = Get.put(TempParentController());
   String schoolID;
   String batchyearID;
@@ -87,11 +90,16 @@ class _GeClasseslListDropDownButtonState
                   () {
                     widget.tempStudentController.classID.value =
                         categoryIDObject['docid'];
+
                     widget.tempParentController.classID.value =
                         categoryIDObject['docid'];
-                    classesListValue = categoryIDObject;
+
                     widget.tempGuardianController.classID.value =
                         categoryIDObject['docid'];
+
+                    widget.addStudentToFirebase.classID.value =
+                        categoryIDObject['docid'];
+
                     classesListValue = categoryIDObject;
                   },
                 );

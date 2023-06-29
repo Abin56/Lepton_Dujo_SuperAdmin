@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "512252187081",
+    "project_id": "leptondujokerala",
+    "storage_bucket": "leptondujokerala.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512252187081:android:1ff4a847cb30eeea6f5818",
+        "android_client_info": {
+          "package_name": "in.DujoSchools.leptonCommunications"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512252187081-2fueetiqr0cblardt68s374fg5nq8rrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPYQ232se8EQjwRWXEyrpD6S280gIWh1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512252187081-2fueetiqr0cblardt68s374fg5nq8rrg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
