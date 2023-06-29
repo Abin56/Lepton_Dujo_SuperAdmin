@@ -20,6 +20,7 @@ void main() async {
         appId: "1:512252187081:web:29a9843fc66f17bc6f5818",
         measurementId: "G-QC6SR6TLE0"),
   );
+  ScreenUtil.ensureScreenSize();
 
   runApp(const MyApp());
 }
@@ -29,8 +30,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-        routes: {
+    return ScreenUtilInit(
+        minTextAdapt: true,
+        splitScreenMode: true,
+        designSize: const Size(1536, 792),
+        builder: (context, child) {
+          return GetMaterialApp(
+          routes: {
           LeptonAdminLoginScreen.route: (context) => LeptonAdminLoginScreen(),
           LeptonHomePage.route: (context) => const LeptonHomePage(),
           SchoolsListScreen.route: (context) => const SchoolsListScreen(),
@@ -48,5 +54,8 @@ class MyApp extends StatelessWidget {
         home:
             //const MobHomePage()
             LeptonAdminLoginScreen());
+        });
+
+            
   }
 }

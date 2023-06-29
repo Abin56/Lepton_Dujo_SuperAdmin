@@ -49,25 +49,28 @@ class LeptonAdminLoginScreen extends StatelessWidget {
                           IconButtonBackWidget(
                             color: cWhite,
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Hi ! \n Admin',
-                                style: ralewayStyle.copyWith(
-                                  fontSize: 45,
-                                  color: AppColors.whiteColor,
-                                  fontWeight: FontWeight.w800,
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Hi ! \nAdmin',
+                                  style: ralewayStyle.copyWith(
+                                    fontSize: 45,
+                                    color: AppColors.whiteColor,
+                                    fontWeight: FontWeight.w800,
+                                  ),
                                 ),
-                              ),
-                              sizedBoxH30,
-                              SizedBox(
-                                height: 350,
-                                child: LottieBuilder.network(
-                                    'https://assets10.lottiefiles.com/packages/lf20_q0vtqaxf.json'),
-                              )
-                            ],
+                                sizedBoxH30,
+                                SizedBox(
+                                  height: 350,
+                                  width: width / 2,
+                                  child: LottieBuilder.network(
+                                      'https://assets10.lottiefiles.com/packages/lf20_q0vtqaxf.json'),
+                                )
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -297,6 +300,6 @@ void errorBox(context, e) {
         return const AlertDialog(
           title: Text("Error"),
           content: Text("Something Went Wrong"),
-        );
-      });
+      );
+});
 }

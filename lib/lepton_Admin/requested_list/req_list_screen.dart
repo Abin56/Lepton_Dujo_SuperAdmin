@@ -1,4 +1,6 @@
+import 'package:dujo_super_admin/fonts/google_monstre.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,11 +30,24 @@ class RequestedSchoolsListScreen extends StatelessWidget {
           child: CircularProgressIndicator.adaptive(),
         );
       } else if (schoolApproveController.reqschools.isEmpty) {
-        return const Center(
-          child: Scaffold(body: Center(child: Text("No Data Found"))),
+        return  Center(
+          child: Scaffold(
+               appBar: AppBar(
+ backgroundColor: Colors.white,
+  leading: const BackButton(
+    color: Colors.black, 
+  ),
+      ),
+      body: Center(child: GoogleMonstserratWidgets(fontsize: 15.w,text: "No Data Found",fontWeight: FontWeight.w600,))),
         );
       } else {
         return Scaffold(
+            appBar: AppBar(
+ backgroundColor: Colors.white,
+  leading: const BackButton(
+    color: Colors.black, 
+  ),
+      ),
           body: SafeArea(
               child: Column(
             children: [
