@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:dujo_super_admin/widgets/icon_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -134,37 +136,29 @@ class LeptonAdminLoginScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 6.0),
-                      Container(
-                        height: 50.0,
-                        width: width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.0),
-                          color: AppColors.whiteColor,
+                      TextFormField(
+                        controller: _leptonIdController,
+                        style: ralewayStyle.copyWith(
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.blueDarkColor,
+                          fontSize: 12.0,
                         ),
-                        child: TextFormField(
-                          controller: _leptonIdController,
-                          style: ralewayStyle.copyWith(
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.blueDarkColor,
-                            fontSize: 12.0,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          prefixIcon: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.mail,color: AppColors.blueDarkColor),
                           ),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(AppIcons.emailIcon),
-                            ),
-                            contentPadding: const EdgeInsets.only(top: 16.0),
-                            hintText: 'Enter your ID',
-                            hintStyle: ralewayStyle.copyWith(
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.blueDarkColor.withOpacity(0.5),
-                              fontSize: 12.0,
-                            ),
+                          contentPadding: const EdgeInsets.only(top: 16.0),
+                          hintText: 'Enter your ID',
+                          hintStyle: ralewayStyle.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.blueDarkColor.withOpacity(0.5),
+                            fontSize: 12.0,
                           ),
                         ),
                       ),
-                      SizedBox(height: height * 0.014),
+                     // SizedBox(height: height * 0.014),
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0),
                         child: Text(
@@ -176,53 +170,46 @@ class LeptonAdminLoginScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 6.0),
-                      Container(
-                          height: 50.0,
-                          width: width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16.0),
-                            color: AppColors.whiteColor,
+                     // const SizedBox(height: 6.0),
+                      Obx(
+                        () => TextFormField(
+                          controller: passwordController,
+                          obscureText:
+                              _hideGetxController.isObscureSecond.value,
+                          style: ralewayStyle.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.blueDarkColor,
+                            fontSize: 12.0,
                           ),
-                          child: Obx(
-                            () => TextFormField(
-                              controller: passwordController,
-                              obscureText:
-                                  _hideGetxController.isObscureSecond.value,
-                              style: ralewayStyle.copyWith(
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.blueDarkColor,
-                                fontSize: 12.0,
-                              ),
-                              // obscureText: true,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                      _hideGetxController.isObscureSecond.value
-                                          ? Icons.visibility_off
-                                          : Icons.visibility),
-                                  onPressed: () {
-                                    _hideGetxController.toggleObscureSecond();
-                                  },
-                                ),
-                                prefixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: Image.asset(AppIcons.lockIcon),
-                                ),
-                                contentPadding:
-                                    const EdgeInsets.only(top: 16.0),
-                                hintText: 'Enter Password',
-                                hintStyle: ralewayStyle.copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  color:
-                                      AppColors.blueDarkColor.withOpacity(0.5),
-                                  fontSize: 12.0,
-                                ),
-                              ),
+                          // obscureText: true,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                  _hideGetxController.isObscureSecond.value
+                                      ? Icons.visibility_off
+                                      : Icons.visibility, color:AppColors.blueDarkColor),
+                              onPressed: () {
+                                _hideGetxController.toggleObscureSecond();
+                              },
                             ),
-                          )),
-                      SizedBox(height: height * 0.03),
+                            prefixIcon: IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.lock,color:AppColors.blueDarkColor ),
+                            ),
+                            contentPadding:
+                                const EdgeInsets.only(top: 16.0),
+                            hintText: 'Enter Password',
+                            hintStyle: ralewayStyle.copyWith(
+                              fontWeight: FontWeight.w400,
+                              color:
+                                  AppColors.blueDarkColor.withOpacity(0.5),
+                              fontSize: 12.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    // SizedBox(height: height * 0.03),
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(

@@ -1,11 +1,10 @@
 import 'package:dujo_super_admin/lepton_Admin/admin_panel_Screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'firebase_options.dart';
 import 'lepton_Admin/admin_home_screen.dart';
-import 'lepton_Admin/list_of_schools/details.dart';
 import 'lepton_Admin/list_of_schools/list_of_schools_screen.dart';
 import 'lepton_Admin/requested_list/req_list_screen.dart';
 

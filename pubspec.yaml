@@ -48,7 +48,7 @@ dependencies:
   uuid: 
   lottie: 
   google_fonts: 
-  flutter_screenutil: ^5.6.0
+  flutter_screenutil: 
   pdf:
   path_provider:
   printing:
