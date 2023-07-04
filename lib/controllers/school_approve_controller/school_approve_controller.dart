@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 
 import '../../model/school_verfi_model/school_verifi_model.dart';
 
-
 class SchoolApproveController extends GetxController {
   RxBool isLoading = false.obs;
   List<SchoolsToBeVerified> reqschools = [];
@@ -78,26 +77,34 @@ class SchoolApproveController extends GetxController {
             firebaseFirestore
                 .collection("SchoolListCollection")
                 .doc(uid)
-                .update({'docid': uid})
-                .then((value) {
-                  firebaseFirestore
-                      .collection("SchoolListCollection")
-                      .doc(uid)
-                      .set({'createDate': DateTime.now()},
-                          SetOptions(merge: true));
-                })
-                .then((value) => showDialog(
-                      context: context,
-                      builder: ((context) => const AlertDialog(
-                            content: Text('Succesfully Approved!'),
-                          )),
-                    ))
-                .then((value) {
-                  firebaseFirestore
-                      .collection("SchoolListCollection")
-                      .doc(uid)
-                      .set({'deactive': false}, SetOptions(merge: true));
-                });
+                .update({'docid': uid}).then((value) {
+              firebaseFirestore
+                  .collection("SchoolListCollection")
+                  .doc(uid)
+                  .set({'createDate': DateTime.now()}, SetOptions(merge: true));
+            }).then((value) {
+              firebaseFirestore
+                  .collection("SchoolListCollection")
+                  .doc(uid)
+                  .collection('Notifications')
+                  .doc('Attendance')
+                  .set({
+                'notificationNeededOrNot': true,
+                'timeToDeliverAbsenceNotification': '1',
+              }).then((value) {
+                firebaseFirestore
+                    .collection("SchoolListCollection")
+                    .doc(uid)
+                    .set({'deactive': false}, SetOptions(merge: true)).then(
+                        (value) => showDialog(
+                              context: context,
+                              builder: ((context) => const AlertDialog(
+                                    content: Text('Succesfully Approved!'),
+                                  )),
+                            ));
+              });
+            });
+
             await fetchReqListSchools();
             isLoading.value = false;
           });

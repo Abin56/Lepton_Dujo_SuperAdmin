@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dujo_super_admin/lepton_Admin/list_of_schools/details.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/buttonContainer.dart';
+import 'details.dart';
 
 class SchoolsListScreen extends StatefulWidget {
   static const String route = '/SchooList';

@@ -65,14 +65,14 @@ class AddStudentToFirebaseController extends GetxController {
                                       i++) {
                                     // log(studentModelList[i].docid.toString());
 
-                                        final studentemail =
+                                    final studentemail =
                                         '${studentModelList[i].studentName?.toLowerCase().replaceAll(' ', '')}${schoolName.text.trim()}${studentModelList[i].admissionNumber}@gmail.com';
                                     log(studentemail);
-                                  await  FirebaseAuth.instance
+                                    await FirebaseAuth.instance
                                         .createUserWithEmailAndPassword(
                                             email: studentemail,
                                             password: '123456')
-                                        .then((value) async{
+                                        .then((value) async {
                                       final studentDetail = AddStudentModel(
                                         docid: value.user!.uid,
                                         uid: value.user!.uid,
@@ -84,8 +84,13 @@ class AddStudentToFirebaseController extends GetxController {
                                         createDate: DateTime.now().toString(),
                                         classID: classId,
                                       );
-
-                                 await     FirebaseFirestore.instance
+                                      await FirebaseFirestore.instance
+                                          .collection('SchoolListCollection')
+                                          .doc(schoolID)
+                                          .collection('AllStudents')
+                                          .doc(value.user!.uid)
+                                          .set(studentDetail.toMap());
+                                      await FirebaseFirestore.instance
                                           .collection('SchoolListCollection')
                                           .doc(schoolID)
                                           .collection(batchYear)
@@ -95,8 +100,8 @@ class AddStudentToFirebaseController extends GetxController {
                                           .collection('Students')
                                           .doc(value.user!.uid)
                                           .set(studentDetail.toMap())
-                                          .then((value) async{
-                                   await     FirebaseFirestore.instance
+                                          .then((value) async {
+                                        await FirebaseFirestore.instance
                                             .collection('SchoolListCollection')
                                             .doc(schoolID)
                                             .collection(batchYear)
@@ -107,7 +112,7 @@ class AddStudentToFirebaseController extends GetxController {
                                             .doc(studentModelList[i].docid)
                                             .delete();
                                       });
-                                    }).then((value)async {
+                                    }).then((value) async {
                                       showToast(msg: 'Added successfully');
                                     });
                                   }

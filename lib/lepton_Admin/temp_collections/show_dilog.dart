@@ -18,7 +18,7 @@ getTempDilogBox(BuildContext context, String schoolID) {
           child: ListBody(
             children: <Widget>[
               SizedBox(
-                height: 500,
+                height: 600,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
