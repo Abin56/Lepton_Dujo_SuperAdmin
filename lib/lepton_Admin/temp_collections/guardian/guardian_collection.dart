@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_super_admin/controllers/temp_Collection_controller/temp_parent_controller/temp_parent_controller.dart';
+import 'package:dujo_super_admin/fonts/google_monstre.dart';
 import 'package:dujo_super_admin/widgets/buttonContainer.dart';
 import 'package:dujo_super_admin/widgets/drop_down/select_batch_year.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../constant/constant.dart';
@@ -24,6 +26,7 @@ class GuardianTempCollection extends StatelessWidget {
             height: 200,
             color: const Color.fromARGB(255, 160, 219, 162),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
                     height: 100,
@@ -79,10 +82,19 @@ class GuardianTempCollection extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     sizedBoxW10,
-                                    Text('${index + 1}'),
+                                    Container(
+                                      height: 59.h,
+                                      width: 50.w,
+                                      child: Center(child: Text('${index + 1}'))),
                                     sizedBoxW10,
-                                    Text(
-                                        snaps.data!.docs[index]['guardianName']),
+                                    Container(
+                                      height: 59.h,
+                                      width: 240.w,
+                                      child: Center(
+                                        child: GoogleMonstserratWidgets(text: 
+                                            snaps.data!.docs[index]['guardianName'],fontsize: 15.w),
+                                      ),
+                                    ),
                                     IconButton(
                                         onPressed: () async {
                                           await tempGuardianController.updateName(
@@ -95,13 +107,21 @@ class GuardianTempCollection extends StatelessWidget {
                                               parentDocID: snaps
                                                   .data!.docs[index]['docid']);
                                         },
-                                        icon: const Icon(
+                                        icon:  Icon(
                                           Icons.edit,
                                           color: Colors.green,
+                                          size: 25.w,
                                         )),
                                     const Spacer(),
-                                    Text(
-                                        'Ph :  ${snaps.data!.docs[index]['guardianPhoneNumber']}'),
+                                    Container(
+                                      height: 59.h,
+                                      width: 240.w,
+
+                                      child: Center(
+                                        child: Text(
+                                            'Ph :  ${snaps.data!.docs[index]['guardianPhoneNumber']}'),
+                                      ),
+                                    ),
                                     IconButton(
                                         onPressed: () async {
                                           await tempGuardianController
@@ -116,9 +136,10 @@ class GuardianTempCollection extends StatelessWidget {
                                                   parentDocID: snaps.data!
                                                       .docs[index]['docid']);
                                         },
-                                        icon: const Icon(
+                                        icon:       Icon(
                                           Icons.edit,
                                           color: Colors.green,
+                                          size: 25.w,
                                         )),
                                     const Spacer(),
                                     Padding(

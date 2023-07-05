@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dujo_super_admin/colors/colors.dart';
 import 'package:dujo_super_admin/widgets/buttonContainer.dart';
 import 'package:dujo_super_admin/widgets/drop_down/select_batch_year.dart';
+import 'package:dujo_super_admin/widgets/icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +19,7 @@ class StudenTempCollection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor:  const Color.fromARGB(255, 160, 219, 162)),
         body: SafeArea(
       child: Column(
         children: [
@@ -24,6 +27,7 @@ class StudenTempCollection extends StatelessWidget {
             height: 200,
             color: const Color.fromARGB(255, 160, 219, 162),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
                     height: 100,
@@ -32,7 +36,7 @@ class StudenTempCollection extends StatelessWidget {
                 Obx(() {
                   // tempStudentController.batchYear.value =
                   //     schoolBatchYearListValue?['id'] ?? '';
-
+      
                   if (tempStudentController.batchYear.value == '') {
                     return const SizedBox(
                         height: 100,
@@ -52,6 +56,7 @@ class StudenTempCollection extends StatelessWidget {
               ],
             ),
           ),
+          sizedBoxW20,
           Expanded(child: Obx(() {
             if (tempStudentController.classID.value == '') {
               return const Center(

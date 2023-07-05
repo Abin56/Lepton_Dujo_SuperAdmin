@@ -27,6 +27,7 @@ class AddStudentToFirebase extends StatelessWidget {
             height: 200,
             color: const Color.fromARGB(255, 160, 219, 162),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
                     height: 100,

@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_super_admin/controllers/temp_Collection_controller/temp_parent_controller/temp_parent_controller.dart';
+import 'package:dujo_super_admin/fonts/google_monstre.dart';
 import 'package:dujo_super_admin/widgets/buttonContainer.dart';
 import 'package:dujo_super_admin/widgets/drop_down/select_batch_year.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../constant/constant.dart';
@@ -11,11 +13,12 @@ import '../../../widgets/drop_down/get_class.dart';
 class ParentTempCollection extends StatelessWidget {
   TempParentController tempParentController = Get.put(TempParentController());
   String schoolID;
-  ParentTempCollection({super.key, required this.schoolID});
+    ParentTempCollection({super.key, required this.schoolID});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(backgroundColor:  const Color.fromARGB(255, 160, 219, 162)),
         body: SafeArea(
       child: Column(
         children: [
@@ -23,6 +26,7 @@ class ParentTempCollection extends StatelessWidget {
             height: 200,
             color: const Color.fromARGB(255, 160, 219, 162),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
                     height: 100,
@@ -78,10 +82,22 @@ class ParentTempCollection extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     sizedBoxW10,
-                                    Text('${index + 1}'),
-                                    sizedBoxW10,
-                                    Text(
-                                        snaps.data!.docs[index]['parentName']),
+                                    Container(
+                                      height: 59.h,
+                                      width: 70.w,
+                                      child: Center(
+                                        child: Text('${index + 1}'))),
+                                    sizedBoxW20,
+                                    Container(
+                                      height: 59.h,
+                                      width: 240.w,
+                                      child: Center(
+                                        child: GoogleMonstserratWidgets(
+                                          text: 
+                                            snaps.data!.docs[index]['parentName'],
+                                            fontsize: 15.w),
+                                      ),
+                                    ),
                                     IconButton(
                                         onPressed: () async {
                                           await tempParentController.updateName(
@@ -94,13 +110,22 @@ class ParentTempCollection extends StatelessWidget {
                                               parentDocID: snaps
                                                   .data!.docs[index]['docid']);
                                         },
-                                        icon: const Icon(
+                                        icon:  Icon(
                                           Icons.edit,
                                           color: Colors.green,
+                                          size: 25.w,
                                         )),
                                     const Spacer(),
-                                    Text(
-                                        'Ph :  ${snaps.data!.docs[index]['parentPhoneNumber']}'),
+                                    Container(
+                                       height: 59.h,
+                                      width: 240.w,
+                                      child: Center(
+                                        child: GoogleMonstserratWidgets(
+                                          text: 
+                                            'Ph :  ${snaps.data!.docs[index]['parentPhoneNumber']}',
+                                            fontsize: 15.w),
+                                      ),
+                                    ),
                                     IconButton(
                                         onPressed: () async {
                                           await tempParentController
@@ -115,9 +140,10 @@ class ParentTempCollection extends StatelessWidget {
                                                   parentDocID: snaps.data!
                                                       .docs[index]['docid']);
                                         },
-                                        icon: const Icon(
+                                        icon:  Icon(
                                           Icons.edit,
                                           color: Colors.green,
+                                          size: 25.w,
                                         )),
                                     const Spacer(),
                                     Padding(

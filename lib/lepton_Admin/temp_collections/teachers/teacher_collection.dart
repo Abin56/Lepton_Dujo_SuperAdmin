@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dujo_super_admin/widgets/buttonContainer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../constant/constant.dart';
@@ -46,10 +47,19 @@ class TeacherTempCollection extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     sizedBoxW10,
-                                    Text('${index + 1}'),
+                                    Container(
+                                      height: 59.h,
+                                      width: 50.w,
+                                      child: Center(child: Text('${index + 1}'))),
                                     sizedBoxW10,
-                                    Text(
-                                        snaps.data!.docs[index]['teacherName']),
+                                    Container(
+                                      height: 59.h,
+                                      width: 240.w,
+                                      child: Center(
+                                        child: Text(
+                                            snaps.data!.docs[index]['teacherName']),
+                                      ),
+                                    ),
                                     IconButton(
                                         onPressed: () async {
                                           await tempTeacherController
@@ -64,8 +74,15 @@ class TeacherTempCollection extends StatelessWidget {
                                           color: Colors.green,
                                         )),
                                     const Spacer(),
-                                    Text(
-                                        'Ph :  ${snaps.data!.docs[index]['teacherPhNo']}'),
+                                    Container(
+                                      height: 59.h,
+                                      width: 240.w,
+                                      child: Center(
+                                        
+                                        child: Text(
+                                            'Ph :  ${snaps.data!.docs[index]['teacherPhNo']}'),
+                                      ),
+                                    ),
                                     IconButton(
                                         onPressed: () async {
                                           await tempTeacherController
@@ -75,13 +92,20 @@ class TeacherTempCollection extends StatelessWidget {
                                                   teacherDocID: snaps.data!
                                                       .docs[index]['docid']);
                                         },
-                                        icon: const Icon(
+                                        icon:  Icon(
                                           Icons.edit,
                                           color: Colors.green,
+                                          size: 25.w,
                                         )),
                                     const Spacer(),
-                                    Text(
-                                        'ID :  ${snaps.data!.docs[index]['employeeID']}'),
+                                    Container(
+                                      height: 59.h,
+                                      width: 240.w,
+                                      child: Center(
+                                        child: Text(
+                                            'ID :  ${snaps.data!.docs[index]['employeeID']}'),
+                                      ),
+                                    ),
                                     IconButton(
                                         onPressed: () async {
                                           await tempTeacherController
@@ -91,9 +115,10 @@ class TeacherTempCollection extends StatelessWidget {
                                                   teacherDocID: snaps.data!
                                                       .docs[index]['docid']);
                                         },
-                                        icon: const Icon(
+                                        icon:  Icon(
                                           Icons.edit,
                                           color: Colors.green,
+                                          size: 25.w,
                                         )),
                                     const Spacer(),
                                     Padding(
