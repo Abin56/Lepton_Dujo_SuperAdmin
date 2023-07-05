@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'firebase_options.dart';
+
 import 'lepton_Admin/admin_home_screen.dart';
 import 'lepton_Admin/list_of_schools/list_of_schools_screen.dart';
 import 'lepton_Admin/requested_list/req_list_screen.dart';
@@ -14,6 +15,19 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   ScreenUtil.ensureScreenSize();
+  //   await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyBPaQ4Ga-d_wTd9pCiU_kMTllMeuVblSP0",
+        authDomain: "leptondujokerala.firebaseapp.com",
+        projectId: "leptondujokerala",
+        storageBucket: "leptondujokerala.appspot.com",
+        messagingSenderId: "512252187081",
+        appId: "1:512252187081:web:29a9843fc66f17bc6f5818",
+        measurementId: "G-QC6SR6TLE0"),
+  );
 
   runApp(const MyApp());
 }
@@ -49,6 +63,6 @@ class MyApp extends StatelessWidget {
             LeptonAdminLoginScreen());
         });
 
-            
+
   }
 }

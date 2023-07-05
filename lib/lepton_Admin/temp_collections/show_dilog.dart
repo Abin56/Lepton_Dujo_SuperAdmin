@@ -1,5 +1,3 @@
-import 'package:dujo_super_admin/colors/colors.dart';
-import 'package:dujo_super_admin/fonts/google_monstre.dart';
 import 'package:dujo_super_admin/lepton_Admin/temp_collections/parents/parent_collection.dart';
 import 'package:dujo_super_admin/lepton_Admin/temp_collections/students/student_collection.dart';
 import 'package:dujo_super_admin/lepton_Admin/temp_collections/teachers/teacher_collection.dart';
@@ -40,7 +38,7 @@ getTempDilogBox(BuildContext context, String schoolID) {
                         colorindex: 0,
                         height: 100.h,
                         width: 200.w,
-                        child:  Center(child: 
+                        child:  Center(child:
                         GoogleMonstserratWidgets(text: 'Student',
                         fontsize: 14.w,color: cWhite,fontWeight: FontWeight.w600,)),
                       ),
@@ -110,7 +108,7 @@ getTempDilogBox(BuildContext context, String schoolID) {
                         height: 100.h,
                         width: 200.w,
                         child:
-                             Center(child: 
+                             Center(child:
                              GoogleMonstserratWidgets(text: 'Add Students AutoMatic',
                              fontsize: 14.w,color: cWhite,fontWeight: FontWeight.w600,)
                              ),

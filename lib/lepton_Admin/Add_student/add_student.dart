@@ -85,15 +85,7 @@ class AddStudentToFirebase extends StatelessWidget {
                                   schoolID,
                                   addStudentToFirebase.batchYear.value,
                                   addStudentToFirebase.classID.value);
-                              // Navigator.push(context, MaterialPageRoute(
-                              //   builder: (context) {
-                              //     return InvoiceScreen(
-                              //         batchID: addStudentToFirebase.batchYear.value,
-                              //         classID: addStudentToFirebase.classID.value,
-                              //         price: 0,
-                              //         schoolID: schoolID);
-                              //   },
-                              // ));
+
                             },
                             child: ButtonContainerWidget(
                                 curving: 10,
@@ -108,7 +100,8 @@ class AddStudentToFirebase extends StatelessWidget {
                       ),
                     );
                   }
-                })
+                }),
+                
               ],
             ),
           ),

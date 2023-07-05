@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/buttonContainer.dart';
+import 'details.dart';
 
 class SchoolsListScreen extends StatefulWidget {
   static const String route = '/SchooList';
@@ -31,14 +32,14 @@ class _SchoolsListScreenState extends State<SchoolsListScreen> {
     color: Colors.black, // <-- SEE HERE
   ),
       ),
-     
+
         body: SafeArea(
       child: Column(
         children: [
            Padding(
             padding: EdgeInsets.only(top: 30.h
             ),
-            child: GoogleMonstserratWidgets(text: 
+            child: GoogleMonstserratWidgets(text:
               "LIST OF SCHOOLS",
               fontsize: 32.w
             ),
