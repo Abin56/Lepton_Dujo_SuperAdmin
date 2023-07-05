@@ -1,3 +1,5 @@
+import 'package:dujo_super_admin/colors/colors.dart';
+import 'package:dujo_super_admin/fonts/google_monstre.dart';
 import 'package:dujo_super_admin/lepton_Admin/temp_collections/parents/parent_collection.dart';
 import 'package:dujo_super_admin/lepton_Admin/temp_collections/students/student_collection.dart';
 import 'package:dujo_super_admin/lepton_Admin/temp_collections/teachers/teacher_collection.dart';
