@@ -79,63 +79,168 @@ class StudenTempCollection extends StatelessWidget {
                               children: [
                                 GestureDetector(
                                   onTap: () async {
-                                    for (var i = 0;
-                                        i < studentModelList.length;
-                                        i++) {
-                                      log(studentModelList[i].studentName!);
-                                      final studentDetail = AddStudentModel(
-                                        gender: studentModelList[i].gender,
-                                        parentPhoneNumber: studentModelList[i]
-                                            .parentPhoneNumber,
-                                        houseName:
-                                            studentModelList[i].houseName,
-                                        place: studentModelList[i].place,
-                                        district: studentModelList[i].district,
-                                        alPhoneNumber:
-                                            studentModelList[i].alPhoneNumber,
-                                        profileImageId:
-                                            studentModelList[i].profileImageId,
-                                        profileImageUrl:
-                                            studentModelList[i].profileImageUrl,
-                                        bloodgroup:
-                                            studentModelList[i].bloodgroup,
-                                        dateofBirth:
-                                            studentModelList[i].dateofBirth,
-                                        parentID: studentModelList[i].parentID,
-                                        guardianID:
-                                            studentModelList[i].guardianID,
-                                        docid: studentModelList[i].docid,
-                                        uid: studentModelList[i].uid,
-                                        studentName:
-                                            studentModelList[i].studentName,
-                                        studentemail:
-                                            studentModelList[i].studentemail,
-                                        admissionNumber:
-                                            studentModelList[i].admissionNumber,
-                                        createDate:
-                                            studentModelList[i].createDate,
-                                        classID: studentModelList[i].classID,
-                                      );
-                                      await FirebaseFirestore.instance
-                                          .collection('SchoolListCollection')
-                                          .doc(schoolID)
-                                          .collection('AllStudents')
-                                          .doc(studentModelList[i].docid)
-                                          .set(studentDetail.toMap(),
-                                              SetOptions(merge: true))
-                                          .then((value) {
-                                        showToast(msg: 'Added');
-                                      });
-                                    }
+                                    TextEditingController passwordController =
+                                        TextEditingController();
+                                    return showDialog(
+                                      context: context,
+                                      barrierDismissible:
+                                          false, // user must tap button!
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: const Text('Enter password '),
+                                          content: SingleChildScrollView(
+                                            child: ListBody(
+                                              children: <Widget>[
+                                                TextFormField(
+                                                  controller:
+                                                      passwordController,
+                                                  decoration: const InputDecoration(
+                                                      hintText:
+                                                          'Enter Developer Password'),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              child: const Text('ok'),
+                                              onPressed: () async {
+                                                if (passwordController.text
+                                                        .trim() ==
+                                                    'lept@987#') {
+                                                  Navigator.pop(context);
+                                                  for (var i = 0;
+                                                      i <
+                                                          studentModelList
+                                                              .length;
+                                                      i++) {
+                                                    log(studentModelList[i]
+                                                        .studentName!);
+                                                    final studentDetail =
+                                                        AddStudentModel(
+                                                      gender:
+                                                          studentModelList[i]
+                                                              .gender,
+                                                      parentPhoneNumber:
+                                                          studentModelList[i]
+                                                              .parentPhoneNumber,
+                                                      houseName:
+                                                          studentModelList[i]
+                                                              .houseName,
+                                                      place: studentModelList[i]
+                                                          .place,
+                                                      district:
+                                                          studentModelList[i]
+                                                              .district,
+                                                      alPhoneNumber:
+                                                          studentModelList[i]
+                                                              .alPhoneNumber,
+                                                      profileImageId:
+                                                          studentModelList[i]
+                                                              .profileImageId,
+                                                      profileImageUrl:
+                                                          studentModelList[i]
+                                                              .profileImageUrl,
+                                                      bloodgroup:
+                                                          studentModelList[i]
+                                                              .bloodgroup,
+                                                      dateofBirth:
+                                                          studentModelList[i]
+                                                              .dateofBirth,
+                                                      parentID:
+                                                          studentModelList[i]
+                                                              .parentID,
+                                                      guardianID:
+                                                          studentModelList[i]
+                                                              .guardianID,
+                                                      docid: studentModelList[i]
+                                                          .docid,
+                                                      uid: studentModelList[i]
+                                                          .uid,
+                                                      studentName:
+                                                          studentModelList[i]
+                                                              .studentName,
+                                                      studentemail:
+                                                          studentModelList[i]
+                                                              .studentemail,
+                                                      admissionNumber:
+                                                          studentModelList[i]
+                                                              .admissionNumber,
+                                                      createDate:
+                                                          studentModelList[i]
+                                                              .createDate,
+                                                      classID:
+                                                          studentModelList[i]
+                                                              .classID,
+                                                    );
+                                                    await FirebaseFirestore
+                                                        .instance
+                                                        .collection(
+                                                            'SchoolListCollection')
+                                                        .doc(schoolID)
+                                                        .collection(
+                                                            'AllStudents')
+                                                        .doc(studentModelList[i]
+                                                            .docid)
+                                                        .set(
+                                                            studentDetail
+                                                                .toMap(),
+                                                            SetOptions(
+                                                                merge: true))
+                                                        .then((value) {
+                                                      showToast(msg: 'Added');
+                                                    });
+                                                  }
+                                                } else {
+                                                  return showDialog(
+                                                    context: context,
+                                                    barrierDismissible:
+                                                        false, // user must tap button!
+                                                    builder:
+                                                        (BuildContext context) {
+                                                      return AlertDialog(
+                                                        title: const Text(
+                                                            'Wrong password'),
+                                                        content:
+                                                            SingleChildScrollView(
+                                                          child: ListBody(
+                                                            children: const <
+                                                                Widget>[],
+                                                          ),
+                                                        ),
+                                                        actions: <Widget>[
+                                                          TextButton(
+                                                            child: const Text(
+                                                                'ok'),
+                                                            onPressed: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop();
+                                                            },
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                }
+                                              },
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
                                   },
                                   child: ButtonContainerWidget(
                                     curving: 20,
                                     colorindex: 0,
                                     height: 40,
-                                    width: 100,
+                                    width: 200,
                                     child: const Center(
                                       child:
-                                          Text("Add students To AllStudents"),
+                                          Text("Add students To AllStudents",style: TextStyle(color: Colors.white),),
                                     ),
                                   ),
                                 )

@@ -13,6 +13,7 @@ void showToast({required String msg}) {
     fontSize: 16.0,
   );
 }
+
 String stringTimeToDateConvert(String date) {
   //String dateandtime convert to "dd-mm-yyyy" this format
   try {
@@ -23,6 +24,7 @@ String stringTimeToDateConvert(String date) {
   }
   return '';
 }
+
 const uuid = Uuid();
 const sizedBoxH10 = SizedBox(
   height: 10,
@@ -39,7 +41,14 @@ const sizedBoxW10 = SizedBox(
 const sizedBoxW20 = SizedBox(
   width: 20,
 );
+
 class BatchYearSelection {
-  static String batchID ='';
-  
+  static String batchID = '';
 }
+
+// class AddingStudentAutomatic {
+//   static String studentID = '';
+//   static String parentID = '';
+//   static String parentEmail = '';
+//   static String parentName = '';
+// }

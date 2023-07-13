@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../constant/constant.dart';
 import '../../model/add_student_model/add_student_model.dart';
+import '../../model/parent_model/parent_model.dart';
 
 class AddStudentToFirebaseController extends GetxController {
   RxString batchYear = ''.obs;
@@ -64,6 +65,8 @@ class AddStudentToFirebaseController extends GetxController {
                                       i < studentModelList.length;
                                       i++) {
                                     // log(studentModelList[i].docid.toString());
+                                    final parentEmail =
+                                        '${studentModelList[i].parentName?.toLowerCase().replaceAll(' ', '')}${schoolName.text.trim()}${studentModelList[i].admissionNumber}@gmail.com';
 
                                     final studentemail =
                                         '${studentModelList[i].studentName?.toLowerCase().replaceAll(' ', '')}${schoolName.text.trim()}${studentModelList[i].admissionNumber}@gmail.com';
@@ -73,6 +76,12 @@ class AddStudentToFirebaseController extends GetxController {
                                             email: studentemail,
                                             password: '123456')
                                         .then((value) async {
+                                      String parentName = '';
+                                      String parentID = '';
+                                      String studentID = '';
+                                      String parentDataEMail = '';
+
+                                      studentID = value.user!.uid;
                                       final studentDetail = AddStudentModel(
                                         docid: value.user!.uid,
                                         uid: value.user!.uid,
@@ -84,22 +93,18 @@ class AddStudentToFirebaseController extends GetxController {
                                         createDate: DateTime.now().toString(),
                                         classID: classId,
                                       );
+                                      parentName =
+                                          studentModelList[i].parentName!;
+
+                                      //Creating student account >>>>>>>>>
+
                                       await FirebaseFirestore.instance
                                           .collection('SchoolListCollection')
                                           .doc(schoolID)
                                           .collection('AllStudents')
-                                          .doc(value.user!.uid)
-                                          .set(studentDetail.toMap());
-                                      await FirebaseFirestore.instance
-                                          .collection('SchoolListCollection')
-                                          .doc(schoolID)
-                                          .collection(batchYear)
-                                          .doc(batchYear)
-                                          .collection('classes')
-                                          .doc(classId)
-                                          .collection('Students')
-                                          .doc(value.user!.uid)
-                                          .set(studentDetail.toMap())
+                                          .doc(studentID)
+                                          .set(studentDetail.toMap(),
+                                              SetOptions(merge: true))
                                           .then((value) async {
                                         await FirebaseFirestore.instance
                                             .collection('SchoolListCollection')
@@ -108,12 +113,91 @@ class AddStudentToFirebaseController extends GetxController {
                                             .doc(batchYear)
                                             .collection('classes')
                                             .doc(classId)
-                                            .collection('TempStudents')
-                                            .doc(studentModelList[i].docid)
-                                            .delete();
+                                            .collection('Students')
+                                            .doc(studentID)
+                                            .set(studentDetail.toMap(),
+                                                SetOptions(merge: true))
+                                            .then((value) async {
+                                          await FirebaseAuth.instance
+                                              .createUserWithEmailAndPassword(
+                                                  email: parentEmail,
+                                                  password: '123456')
+                                              .then((value) async {
+                                            parentID = value.user!.uid;
+                                            parentDataEMail =
+                                                value.user!.email ?? "";
+
+                                            await FirebaseFirestore.instance
+                                                .collection(
+                                                    'SchoolListCollection')
+                                                .doc(schoolID)
+                                                .collection(batchYear)
+                                                .doc(batchYear)
+                                                .collection('classes')
+                                                .doc(classId)
+                                                .collection('Students')
+                                                .doc(studentID)
+                                                .set({
+                                              'parentID': parentID,
+                                              'parentName': parentDataEMail,
+                                            }, SetOptions(merge: true)).then(
+                                                    (value) async {
+                                              await FirebaseFirestore.instance
+                                                  .collection(
+                                                      'SchoolListCollection')
+                                                  .doc(schoolID)
+                                                  .collection('AllStudents')
+                                                  .doc(studentID)
+                                                  .set({
+                                                'parentID': parentID,
+                                                'parentName': parentDataEMail,
+                                              });
+                                            }).then((value) async {
+                                              final parentDetails = ParentModel(
+                                                  parentName: parentName,
+                                                  parentEmail: parentDataEMail,
+                                                  studentID: studentID,
+                                                  docid: parentID);
+
+                                              //creating parent profile >>>>>>>>>>>
+
+                                              await FirebaseFirestore.instance
+                                                  .collection(
+                                                      'SchoolListCollection')
+                                                  .doc(schoolID)
+                                                  .collection(batchYear)
+                                                  .doc(batchYear)
+                                                  .collection('classes')
+                                                  .doc(classId)
+                                                  .collection(
+                                                      'ParentCollection')
+                                                  .doc(parentID)
+                                                  .set(parentDetails.toMap(),
+                                                      SetOptions(merge: true))
+                                                  .then((value) async {
+                                                log('StudentId${studentModelList[i].docid.toString()}');
+                                                await FirebaseFirestore.instance
+                                                    .collection(
+                                                        'SchoolListCollection')
+                                                    .doc(schoolID)
+                                                    .collection(batchYear)
+                                                    .doc(batchYear)
+                                                    .collection('classes')
+                                                    .doc(classId)
+                                                    .collection('TempStudents')
+                                                    .doc(studentModelList[i]
+                                                        .docid)
+                                                    .delete()
+                                                    .then((value) {
+                                                  showToast(
+                                                      msg:
+                                                          'Added successfully');
+                                                });
+                                              });
+                                            });
+                                          });
+                                        });
                                       });
-                                    }).then((value) async {
-                                      showToast(msg: 'Added successfully');
                                     });
                                   }
                                 },
