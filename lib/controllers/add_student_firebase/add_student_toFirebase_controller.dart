@@ -118,6 +118,15 @@ class AddStudentToFirebaseController extends GetxController {
                                             .set(studentDetail.toMap(),
                                                 SetOptions(merge: true))
                                             .then((value) async {
+                                          await FirebaseFirestore.instance
+                                              .collection(
+                                                  'SchoolListCollection')
+                                              .doc(schoolID)
+                                              .collection('AllStudents')
+                                              .doc(studentID)
+                                              .set(studentDetail.toMap(),
+                                                  SetOptions(merge: true));
+                                        }).then((value) async {
                                           await FirebaseAuth.instance
                                               .createUserWithEmailAndPassword(
                                                   email: parentEmail,
@@ -151,7 +160,7 @@ class AddStudentToFirebaseController extends GetxController {
                                                   .set({
                                                 'parentID': parentID,
                                                 'parentName': parentDataEMail,
-                                              });
+                                              }, SetOptions(merge: true));
                                             }).then((value) async {
                                               final parentDetails = ParentModel(
                                                   parentName: parentName,

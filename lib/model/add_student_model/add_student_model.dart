@@ -22,7 +22,7 @@ class AddStudentModel {
   String? docid;
   String? parentID;
   String? guardianID;
-  String userRole;
+  String? userRole;
   AddStudentModel({
     this.parentName,
     this.uid,
@@ -97,27 +97,27 @@ class AddStudentModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parentName': parentName??"",
-      'uid': uid??"",
-      'studentName': studentName??"",
-      'gender': gender??"",
-      'admissionNumber': admissionNumber??"",
-      'studentemail': studentemail??"",
-      'parentPhoneNumber': parentPhoneNumber??"",
-      'classID': classID??"",
-      'houseName': houseName??"",
-      'place': place??"",
-      'district': district??"",
-      'alPhoneNumber': alPhoneNumber??"",
-      'profileImageId': profileImageId??"",
-      'profileImageUrl': profileImageUrl??"",
-      'createDate': createDate??"",
-      'bloodgroup': bloodgroup??"",
-      'dateofBirth': dateofBirth??"",
-      'docid': docid??"",
-      'parentID': parentID??"",
-      'guardianID': guardianID??"",
-      'userRole': userRole,
+      'parentName': parentName??'',
+      'uid': uid??'',
+      'studentName': studentName??'',
+      'gender': gender??'',
+      'admissionNumber': admissionNumber??'',
+      'studentemail': studentemail??'',
+      'parentPhoneNumber': parentPhoneNumber??'',
+      'classID': classID??'',
+      'houseName': houseName??'',
+      'place': place??'',
+      'district': district??'',
+      'alPhoneNumber': alPhoneNumber??'',
+      'profileImageId': profileImageId??'',
+      'profileImageUrl': profileImageUrl??'',
+      'createDate': createDate??'',
+      'bloodgroup': bloodgroup??'',
+      'dateofBirth': dateofBirth??'',
+      'docid': docid??'',
+      'parentID': parentID??'',
+      'guardianID': guardianID??'',
+      'userRole': userRole??'',
     };
   }
 
@@ -143,7 +143,7 @@ class AddStudentModel {
       docid: map['docid'] != null ? map['docid'] as String : '',
       parentID: map['parentID'] != null ? map['parentID'] as String : '',
       guardianID: map['guardianID'] != null ? map['guardianID'] as String : '',
-      userRole: map['userRole'] as String,
+      userRole: map['userRole'] != null ? map['userRole'] as String : '',
     );
   }
 

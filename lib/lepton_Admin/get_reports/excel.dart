@@ -22,11 +22,17 @@ void exportDataToCSV(String schoolID, String batchID, String classID) async {
   final data = await getCollectionData();
 
   final csvData = [
-    ['Name', 'E-mail', 'Admission Number'], // CSV header row
+    [
+      'Name',
+      'E-mail',
+      'Admission Number',
+      'Parent E mail'
+    ], // CSV header row
     ...data.map((document) => [
           document['studentName'],
           document['studentemail'],
           document['admissionNumber'],
+          document['parentName'],
         ]) // Extract the fields you want to export from each document
   ];
 
